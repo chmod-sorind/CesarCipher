@@ -20,20 +20,16 @@ int main(int argc, char ** argv)
 	std::cout<< "Enter your message: ";
 	std::cin>> message;
 	
-	std::string alphaSpace = " abcdefghijklmnopqrstuvwxyz";          // Store the alphabet in a char array. This array contains also a space for a more ambiguous encryption.
-	int alphaSpaceLenght = std::size(alphaSpace);
+	std::string alphaSpace = " abcdefghijklmnopqrstuvwxyz";          // Store the characters used in a char array.
+	int alphaSpaceLenght = std::size(alphaSpace);                    // Store the lenght of the character array.
 
-	std::vector<int> list;                                      // Define an empty vector which later will contain a list of leter indexes used to encrypt the message.
-	std::vector<char> encMSG;
+	std::vector<int> list;                                           // Define an empty vector which will later contain a list of leter indexes used to encrypt the message.
+	std::vector<char> encMSG;                                        // Define an empty vector which will later contain the encripted message.
 
 	for (int l = 0; message[l]; ++l) {                               // Iterate through the characters of the message.
 		char letter = message[l];                                    // Store each character in a variable "letter" for later comparison.
-		//std::cout << std::endl;
-		//printf("=%c=", letter);
 		for (int c = 0; alphaSpace[c]; ++c) {                        // Iterate through the caracters of the alphaSpace.
 			if (letter == alphaSpace[c]) {                           // Test if the letter matches a character in alphaSpace.
-				//std::cout << std::endl;
-				//printf("+%c+", alphaSpace[c]);
 				int shiftedIndexes = c + key;                        // Store the intex of the matching letter and increment it by the shiftting value.
 				if (shiftedIndexes > alphaSpaceLenght) {
 					shiftedIndexes = (shiftedIndexes - alphaSpaceLenght) - 1 ;
@@ -47,7 +43,6 @@ int main(int argc, char ** argv)
 	std::vector<int>::iterator listBegin = list.begin();
 	std::vector<int>::iterator listEnd = list.end();
 	for (auto listb = listBegin; listb < listEnd; ++listb) {
-		//std::cout << *listb << ' ';
 		for (int i = 0; alphaSpace[i]; ++i) {
 			if (i == *listb) {
 				encMSG.insert(encMSG.end(), alphaSpace[i]);
@@ -59,46 +54,4 @@ int main(int argc, char ** argv)
 	std::string encriptedMessage(encMSG.begin(), encMSG.end());
 	printf("Your Encripted message is: %s", encriptedMessage.c_str());
 
-
-	//std::vector<char>::iterator encMSG_begin = encMSG.begin();
-	//std::vector<char>::iterator encMSG_end = encMSG.end();
-	//for (auto encMSG_b = encMSG_begin; encMSG_b < encMSG_end; ++encMSG_b) {
-	//	std::cout << *encMSG_b;
-	//}
-
-
-	//std::cout << std::endl;
-
-
-	//for (int i = key; alphaSpace[i];) {
-	//	if (i == 26) {
-	//		printf(" %c  ", alphaSpace[i]);
-	//		i = 0;			
-	//	}
-	//	else {
-	//		printf(" %c  ", alphaSpace[i]);
-	//		++i;
-	//		if (i == key) {
-	//			break;
-	//		}
-	//	}
-	//}
-
-	//std::cout<< std::endl;
-
-	//for (int i = 0; alphaSpace[i]; ++i) {
-	//	if (i > 9) {
-	//		printf(" %d ", i);
-	//	}
-	//	else
-	//	{
-	//		printf(" %d  ", i);
-	//	}
-	//}
-
-	//std::cout << std::endl;
-
-	//for (int i = 0; alphaSpace[i]; ++i) {
-	//	printf(" %c  ", alphaSpace[i]);
-	//}
 }
