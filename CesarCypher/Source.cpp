@@ -18,7 +18,7 @@ int main()
 	std::cout << "Enter your message: " << std::endl;
 	std::getline(std::cin >> std::ws, rawMessage);
 
-	std::string encriptedMessage;										// Define an empty vector which will later contain the encripted message.
+	std::string encriptedMessage;										// Define an empty string which will later contain the encripted message.
 
 	for (int i = 0; rawMessage[i]; ++i)									// Iterate through the characters of the message.
 	{
